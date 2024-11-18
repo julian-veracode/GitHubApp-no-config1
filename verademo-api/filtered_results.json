@@ -1,0 +1,710 @@
+{
+  "_links": {
+    "root": {
+      "href": "/"
+    },
+    "self": {
+      "href": "/scans/deb4cf05-01b5-4bee-8d78-3bf5fba606ad/findings"
+    },
+    "help": {
+      "href": "https://help.veracode.com/reader/tS9CaFwL4_lbIEWWomsJoA/ovfZGgu96UINQxIuTqRDwg"
+    }
+  },
+  "scan_id": "deb4cf05-01b5-4bee-8d78-3bf5fba606ad",
+  "scan_status": "SUCCESS",
+  "message": "Scan successful. Results size: 39442 bytes",
+  "modules": [
+    "JS files within Archive.zip",
+    "JS files within Archive_nodemodule_call-bind",
+    "JS files within Archive_nodemodule_get-intrinsic",
+    "JS files within Archive_nodemodule_get-symbol-description",
+    "JS files within Archive_nodemodule_has-tostringtag",
+    "JS files within Archive_nodemodule_is-shared-array-buffer",
+    "JS files within Archive_nodemodule_v8-compile-cache-lib"
+  ],
+  "modules_count": 7,
+  "findings": [
+    {
+      "title": "util.exec",
+      "issue_id": 1011,
+      "gob": "B",
+      "severity": 5,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an OS Command (\u0027OS Command Injection\u0027)",
+      "cwe_id": "78",
+      "display_text": "\u003cspan\u003eThis call to util.exec() contains a command injection flaw.  The argument to the function is constructed using untrusted input.  If an attacker is allowed to specify all or part of the command, it may be possible to execute commands on the server with the privileges of the executing process.  The level of exposure depends on the effectiveness of input validation routines, if any. \u003c/span\u003e \u003cspan\u003eValidate all untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.  When using blocklists, be sure that the sanitizing routine performs a sufficient number of iterations to remove all instances of disallowed characters.  Most APIs that execute system commands also have a \"safe\" version of the method that takes an array of strings as input rather than a single string, which protects against some forms of command injection.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/78.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Command_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/admin.service.js",
+          "line": 6,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "4215267532",
+        "prototype_hash": "3349687165",
+        "flaw_hash": "1024363969",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3522166129",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "438364638",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/78.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1014,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "tools/checkUserToken.js",
+          "line": 16,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1659696732",
+        "prototype_hash": "2577801440",
+        "flaw_hash": "4172093100",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3765116049",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "3282535353",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1019,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/users.service.js",
+          "line": 21,
+          "function_name": "lambda_4",
+          "qualified_function_name": "lambda_4",
+          "function_prototype": "lambda_4(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2506157463",
+        "prototype_hash": "2621257728",
+        "flaw_hash": "2706947319",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "1051884090",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2928981962",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1016,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/posts.service.js",
+          "line": 6,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "4052224239",
+        "prototype_hash": "3349687165",
+        "flaw_hash": "3313798913",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2748884418",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2885865941",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1017,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/posts.service.js",
+          "line": 37,
+          "function_name": "lambda_6",
+          "qualified_function_name": "lambda_6",
+          "function_prototype": "lambda_6(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2829170016",
+        "prototype_hash": "1013749823",
+        "flaw_hash": "3254388033",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "1605525453",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1463574327",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1018,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/posts.service.js",
+          "line": 54,
+          "function_name": "lambda_8",
+          "qualified_function_name": "lambda_8",
+          "function_prototype": "lambda_8(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2481601075",
+        "prototype_hash": "1058856979",
+        "flaw_hash": "183473751",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2582653412",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1362066598",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "mysql.Connection.query",
+      "issue_id": 1015,
+      "gob": "B",
+      "severity": 4,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Neutralization of Special Elements used in an SQL Command (\u0027SQL Injection\u0027)",
+      "cwe_id": "89",
+      "display_text": "\u003cspan\u003eThis database query contains a SQL injection flaw.  The call to mysql.Connection.query() constructs a dynamic SQL query using a variable derived from untrusted input.  An attacker could exploit this flaw to execute arbitrary SQL queries against the database. \u003c/span\u003e \u003cspan\u003eAvoid dynamically constructing SQL queries.  Instead, use parameterized prepared statements to prevent the database from interpreting the contents of bind variables as part of the query.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/89.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/SQL_Injection\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/posts.service.js",
+          "line": 76,
+          "function_name": "lambda_10",
+          "qualified_function_name": "lambda_10",
+          "function_prototype": "lambda_10(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "4270260105",
+        "prototype_hash": "2337889297",
+        "flaw_hash": "183473751",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2582653412",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1362066598",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/89.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1010,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "tools/checkUserToken.js",
+          "line": 11,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1659696732",
+        "prototype_hash": "2577801440",
+        "flaw_hash": "1106728235",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "1787831704",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "3865638322",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "fs.readFile",
+      "issue_id": 1012,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "External Control of File Name or Path",
+      "cwe_id": "73",
+      "display_text": "\u003cspan\u003eThis call to fs.readFile() contains a path manipulation flaw.  The argument to the function is a filename constructed using untrusted input.  If an attacker is allowed to specify all or part of the filename, it may be possible to gain unauthorized access to files on the server, including those outside the webroot, that would be normally be inaccessible to end users.  The level of exposure depends on the effectiveness of input validation routines, if any. \u003c/span\u003e \u003cspan\u003eValidate all untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.  When using blocklists, be sure that the sanitizing routine performs a sufficient number of iterations to remove all instances of disallowed characters.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/73.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Path_Traversal\"\u003eOWASP\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "services/admin.service.js",
+          "line": 22,
+          "function_name": "lambda_4",
+          "qualified_function_name": "lambda_4",
+          "function_prototype": "lambda_4(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1280549251",
+        "prototype_hash": "2621257728",
+        "flaw_hash": "3790032437",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2269688901",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "438364638",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/73.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1007,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/users.controller.js",
+          "line": 6,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "185813864",
+        "prototype_hash": "2577801440",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1002,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/users.controller.js",
+          "line": 22,
+          "function_name": "lambda_4",
+          "qualified_function_name": "lambda_4",
+          "function_prototype": "lambda_4(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3209905293",
+        "prototype_hash": "1189709549",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1004,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/posts.controller.js",
+          "line": 5,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1398125746",
+        "prototype_hash": "2577801440",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1005,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/posts.controller.js",
+          "line": 21,
+          "function_name": "lambda_4",
+          "qualified_function_name": "lambda_4",
+          "function_prototype": "lambda_4(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2054685509",
+        "prototype_hash": "1189709549",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1006,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/posts.controller.js",
+          "line": 48,
+          "function_name": "lambda_6",
+          "qualified_function_name": "lambda_6",
+          "function_prototype": "lambda_6(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3088769880",
+        "prototype_hash": "1558378819",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1001,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/posts.controller.js",
+          "line": 78,
+          "function_name": "lambda_8",
+          "qualified_function_name": "lambda_8",
+          "function_prototype": "lambda_8(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2547334488",
+        "prototype_hash": "2018426105",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1009,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/posts.controller.js",
+          "line": 108,
+          "function_name": "lambda_10",
+          "qualified_function_name": "lambda_10",
+          "function_prototype": "lambda_10(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1291853774",
+        "prototype_hash": "3756775553",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1003,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/admin.controller.js",
+          "line": 5,
+          "function_name": "lambda_2",
+          "qualified_function_name": "lambda_2",
+          "function_prototype": "lambda_2(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1525476962",
+        "prototype_hash": "2577801440",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "console.log",
+      "issue_id": 1008,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to console.log() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. \u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/admin.controller.js",
+          "line": 38,
+          "function_name": "lambda_4",
+          "qualified_function_name": "lambda_4",
+          "function_prototype": "lambda_4(: any,  : any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "982652566",
+        "prototype_hash": "1189709549",
+        "flaw_hash": "2911558860",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2852039315",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "2036972363",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "set",
+      "issue_id": 1000,
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "crypto",
+      "issue_type": "Use of Hard-coded Password",
+      "cwe_id": "259",
+      "display_text": "\u003cspan\u003eThis variable assignment uses a hard-coded password that may compromise system security in a way that cannot be easily remedied.  The use of a hard-coded password significantly increases the possibility that the account being protected will be compromised.  Moreover, the password cannot be changed without patching the software.  If a hard-coded password is compromised in a commercial product, all deployed instances may be vulnerable to attack.  In some cases, this finding may indicate a reference to a password (e.g. the name of a key in a properties file) rather than an actual password. set\u003c/span\u003e \u003cspan\u003eStore passwords out-of-band from the application code.  Follow best practices for protecting credentials stored in locations such as configuration or properties files. An HSM may be appropriate for particularly sensitive credentials.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/259.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "config/db.config.js",
+          "line": 6,
+          "function_name": "!main",
+          "qualified_function_name": "!main",
+          "function_prototype": "!main() : void",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "256087705",
+        "prototype_hash": "211846691",
+        "flaw_hash": "2046623552",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "671706132",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/259.html"
+    },
+    {
+      "title": "express.Response.send",
+      "issue_id": 1013,
+      "gob": "B",
+      "severity": 2,
+      "issue_type_id": "taint",
+      "issue_type": "Information Exposure Through Sent Data",
+      "cwe_id": "201",
+      "display_text": "\u003cspan\u003e The application calls the express.Response.send() function, which will result in data being transferred out of the application (via the network or another medium).  In this case, the message being sent contains local file data.  \u003c/span\u003e \u003cspan\u003eEnsure that the transfer of the sensitive data is intended and that it does not violate application security policy.  This flaw is categorized as low severity because it only impacts confidentiality, not integrity or availability.  However, in the context of a mobile application, the significance of an information leak may be much greater, especially if misaligned with user expectations or data privacy policies.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/201.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/Top10/A05_2021-Security_Misconfiguration/\"\u003eOWASP Security Misconfiguration\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/Top10/A02_2021-Cryptographic_Failures/\"\u003eOWASP Cryptographic Failures\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "controller/admin.controller.js",
+          "line": 62,
+          "function_name": "lambda_3",
+          "qualified_function_name": "lambda_3",
+          "function_prototype": "lambda_3(: any,  : any,  : any, ...) : any",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "749458621",
+        "prototype_hash": "690760149",
+        "flaw_hash": "261884399",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 2,
+        "cause_hash": "1176028798",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1522093433",
+        "cause_hash2_ordinal": "3"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/201.html"
+    }
+  ],
+  "pipeline_scan": "22.12.0-0",
+  "dev_stage": "DEVELOPMENT"
+}
